@@ -1,0 +1,22 @@
+promptever-app/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Ana layout (Sidebar + Header)
+│   │   ├── page.tsx            # Dashboard sayfası
+│   │   ├── globals.css         # Tailwind + shadcn variables
+│   │   ├── chat/page.tsx       # Chat sayfası
+│   │   └── api/health/route.ts # Health check endpoint
+│   ├── components/
+│   │   ├── ui/                 # shadcn-style base components
+│   │   ├── layout/             # Sidebar, Header
+│   │   ├── dashboard/          # Stats, QuickActions, Activity
+│   │   └── chat/               # ChatInterface, Messages, Sidebar
+│   └── lib/
+│       ├── api.ts              # RAG API client
+│       ├── store.ts            # Zustand state management
+│       └── utils.ts            # Helpers (cn, formatNumber, etc.)
+├── nginx/nginx.conf            # HTTPS reverse proxy
+├── docker-compose.yml          # Container orchestration
+├── Dockerfile                  # Multi-stage build
+├── deploy.sh                   # Deployment script
+└── package.json                # Dependencies

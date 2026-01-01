@@ -1,0 +1,203 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-01-01T00:00:00Z",
+  "categories": [
+    {
+      "id": "volume",
+      "name": "Hacim Analizi",
+      "icon": "📊",
+      "order": 1
+    },
+    {
+      "id": "cost",
+      "name": "Maliyet Analizi",
+      "icon": "💰",
+      "order": 2
+    },
+    {
+      "id": "trend",
+      "name": "Trend Analizi",
+      "icon": "📈",
+      "order": 3
+    },
+    {
+      "id": "seasonal",
+      "name": "Mevsimsel Analiz",
+      "icon": "🌡️",
+      "order": 4
+    },
+    {
+      "id": "vehicle",
+      "name": "Araç Analizi",
+      "icon": "🚛",
+      "order": 5
+    },
+    {
+      "id": "customer",
+      "name": "Müşteri Analizi",
+      "icon": "👥",
+      "order": 6
+    },
+    {
+      "id": "fault",
+      "name": "Arıza Analizi",
+      "icon": "⚠️",
+      "order": 7
+    }
+  ],
+  "queries": [
+    {
+      "id": "q001",
+      "category_id": "volume",
+      "text": "Bakım ve onarım işlemlerinin dağılımı nedir?",
+      "description": "Genel bakım/onarım dağılım analizi",
+      "tags": ["dağılım", "bakım", "onarım"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q002",
+      "category_id": "volume",
+      "text": "Bakım ve onarım işlemlerinin yıllara göre dağılımı nedir?",
+      "description": "Yıl bazlı bakım/onarım trendi",
+      "tags": ["yıl", "dağılım", "trend"],
+      "is_active": true,
+      "order": 2
+    },
+    {
+      "id": "q003",
+      "category_id": "volume",
+      "text": "Bakım ve onarım işlemlerinin yıllara ve aylara göre dağılımı nedir?",
+      "description": "Yıl ve ay bazlı detaylı analiz",
+      "tags": ["yıl", "ay", "dağılım"],
+      "is_active": true,
+      "order": 3
+    },
+    {
+      "id": "q004",
+      "category_id": "seasonal",
+      "text": "Bakım ve onarım işlemlerinin mevsimlere göre dağılımı nedir?",
+      "description": "Mevsimsel bakım yoğunluğu",
+      "tags": ["mevsim", "dağılım"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q005",
+      "category_id": "seasonal",
+      "text": "Son 2 yılda bakım ve onarım işlemlerinin mevsimlere göre dağılımı nedir?",
+      "description": "Son 2 yıl mevsimsel analiz",
+      "tags": ["mevsim", "son 2 yıl"],
+      "is_active": true,
+      "order": 2
+    },
+    {
+      "id": "q006",
+      "category_id": "volume",
+      "text": "2021 yılında bakım ve onarım işlemlerinin aylara göre dağılımı nedir?",
+      "description": "2021 aylık bakım analizi",
+      "tags": ["2021", "ay", "dağılım"],
+      "is_active": true,
+      "order": 4
+    },
+    {
+      "id": "q007",
+      "category_id": "trend",
+      "text": "Ay bazında yapılan bakım/onarım sayıları nasıl değişiyor?",
+      "description": "Aylık bakım trend analizi",
+      "tags": ["ay", "trend", "bakım"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q008",
+      "category_id": "seasonal",
+      "text": "Kış mevsiminde en çok hangi malzemeler kullanılıyor?",
+      "description": "Kış mevsimi malzeme analizi",
+      "tags": ["kış", "malzeme", "mevsim"],
+      "is_active": true,
+      "order": 3
+    },
+    {
+      "id": "q009",
+      "category_id": "seasonal",
+      "text": "Son 2 yılda mevsimlere göre en çok kullanılan ilk 10 malzeme nedir?",
+      "description": "Mevsimsel Top 10 malzeme",
+      "tags": ["mevsim", "malzeme", "top 10"],
+      "is_active": true,
+      "order": 4
+    },
+    {
+      "id": "q010",
+      "category_id": "vehicle",
+      "text": "Araç modellerine göre en çok kullanılan malzemeler nedir?",
+      "description": "Model bazlı malzeme analizi",
+      "tags": ["araç", "model", "malzeme"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q011",
+      "category_id": "seasonal",
+      "text": "Kış mevsiminde servise en çok hangi araç tipleri geliyor?",
+      "description": "Kış mevsimi araç tipi analizi",
+      "tags": ["kış", "araç", "servis"],
+      "is_active": true,
+      "order": 5
+    },
+    {
+      "id": "q012",
+      "category_id": "vehicle",
+      "text": "Servise en çok gelen araç modelleri hangileri?",
+      "description": "En sık servis gören araçlar",
+      "tags": ["araç", "servis", "sıklık"],
+      "is_active": true,
+      "order": 2
+    },
+    {
+      "id": "q013",
+      "category_id": "customer",
+      "text": "Servise en çok gelen müşteriler hangileri?",
+      "description": "Müşteri sıklık analizi",
+      "tags": ["müşteri", "servis", "sıklık"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q014",
+      "category_id": "fault",
+      "text": "Mevsimlere göre en sık görülen arızalar hangileri?",
+      "description": "Mevsimsel arıza dağılımı",
+      "tags": ["mevsim", "arıza", "sıklık"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q015",
+      "category_id": "fault",
+      "text": "Son 2 yılda en çok gelen arızalar",
+      "description": "Son 2 yıl arıza sıralaması",
+      "tags": ["arıza", "son 2 yıl", "sıklık"],
+      "is_active": true,
+      "order": 2
+    },
+    {
+      "id": "q016",
+      "category_id": "cost",
+      "text": "Son 2 yılda fiyatı en çok artan malzemeler hangileri?",
+      "description": "Malzeme fiyat artış analizi",
+      "tags": ["fiyat", "artış", "malzeme"],
+      "is_active": true,
+      "order": 1
+    },
+    {
+      "id": "q017",
+      "category_id": "seasonal",
+      "text": "Yıllara ve mevsimlere göre en çok kullanılan malzemeler hangileri?",
+      "description": "Yıl-Mevsim pivot analizi",
+      "tags": ["yıl", "mevsim", "malzeme"],
+      "is_active": true,
+      "order": 6
+    }
+  ]
+}

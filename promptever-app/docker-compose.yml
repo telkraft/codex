@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  promptever-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: promptever-app
+    ports:
+      - "127.0.0.1:9020:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_RAG_API_URL=https://app.promptever.com/api/rag
+    networks:
+      - xapia_net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  xapia_net:
+    external: true
