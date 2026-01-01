@@ -1,0 +1,510 @@
+{
+  "version": "1.0",
+  "title": "Promptever - Kurumsal Deneyim Hafızası",
+  "groups": {
+    "giris": {
+      "name": "Giriş",
+      "slides": [
+        0,
+        1
+      ]
+    },
+    "problem": {
+      "name": "Problem",
+      "slides": [
+        2,
+        3,
+        4
+      ]
+    },
+    "cozum": {
+      "name": "Çözüm",
+      "slides": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "mimari": {
+      "name": "Mimari",
+      "slides": [
+        12,
+        13,
+        14
+      ]
+    },
+    "pazar": {
+      "name": "Pazar",
+      "slides": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "strateji": {
+      "name": "Strateji",
+      "slides": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        30
+      ]
+    },
+    "yatirim": {
+      "name": "Yatırım",
+      "slides": [
+        27
+      ]
+    },
+    "ekip": {
+      "name": "Ekip",
+      "slides": [
+        28
+      ]
+    },
+    "kapani": {
+      "name": "Kapanış",
+      "slides": [
+        29
+      ]
+    }
+  },
+  "slides": [
+    {
+      "id": "slide-00",
+      "file": "slides/slide-00.html",
+      "title": "Promptever",
+      "group": "giris",
+      "explanation": "<p><strong>Açılış:</strong> Promptever, bir yapay zeka ürünü değil; kurumların yaşadıklarını anlam, bağlam ve zaman boyutuyla hatırlamasını sağlayan bir deneyim hafızasıdır.</p><p><strong>Ana mesaj:</strong> Veri cevap üretir; ancak sürdürülebilir kararlar, geçmiş deneyimlerin doğru şekilde hatırlanmasına dayanır.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 1
+    },
+    {
+      "id": "slide-01",
+      "file": "slides/slide-01.html",
+      "title": "Zekâ Modelle Değil, Hafızayla Başlar",
+      "group": "giris",
+      "explanation": "<p><strong>Ana mesaj:</strong> Daha büyük veya daha gelişmiş modeller tek başına daha iyi kararlar üretmez.</p><p><strong>Vurgu:</strong> Kurumsal hafıza olmadan yapay zekâ kalıcı bir değer üretemez.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 2
+    },
+    {
+      "id": "slide-02",
+      "file": "slides/slide-02.html",
+      "title": "AI Var, Değer Yok",
+      "group": "problem",
+      "explanation": "<p><strong>Çerçeve:</strong> Bugün pek çok kurum yapay zekâ denemeleri yapıyor.</p><p><strong>Ana mesaj:</strong> Asıl sorun modellerin başarısız olması değil, bu denemelerin zaman içinde kalıcı değere dönüşmemesidir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 3
+    },
+    {
+      "id": "slide-03",
+      "file": "slides/slide-03.html",
+      "title": "Veri Hatırlamaz",
+      "group": "problem",
+      "explanation": "<p><strong>Ana mesaj:</strong> Kurumlarda veri bol miktarda bulunur; ancak veri tek başına neden–sonuç ilişkisini taşımaz.</p><p><strong>Vurgu:</strong> Kararların arkasındaki bağlam kaybolduğunda, yapay zekâ yalnızca yüzeysel cevaplar üretir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 4
+    },
+    {
+      "id": "slide-04",
+      "file": "slides/slide-04.html",
+      "title": "Kurumda Yaşananlar Kendiliğinden Deneyim Olmaz",
+      "group": "problem",
+      "explanation": "<p><strong>Ana mesaj:</strong> Kurumlarda her gün binlerce olay yaşanır; ancak bu olaylar kendiliğinden kurumsal deneyime dönüşmez.</p><p><strong>Vurgu:</strong> Deneyim kaydedilmezse, her karar yeniden sıfırdan alınır.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 5
+    },
+    {
+      "id": "slide-05",
+      "file": "slides/slide-05.html",
+      "title": "Promptever: Kurumsal Deneyim Hafızası",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever mevcut ERP, CRM veya IoT sistemlerinin yerine geçmez.</p><p><strong>Vurgu:</strong> Bu sistemlerde yaşananları ortak bir deneyim hafızasında biriktirerek, kurumsal öğrenmeyi kalıcı hale getirir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 6
+    },
+    {
+      "id": "slide-06",
+      "file": "slides/slide-06.html",
+      "title": "Bir Deneyimin Anatomisi",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Bir deneyim; kim yaptı, ne yaptı, hangi koşulda, hangi araçlarla ve ne sonuçla gerçekleşti sorularının birlikte cevaplanmasıyla anlam kazanır.</p><p><strong>Vurgu:</strong> Bu bütünlük, yapay zekâ için bağlam üretir.</p>",
+      "audiences": [
+        "technical",
+        "marketing"
+      ],
+      "order": 7
+    },
+    {
+      "id": "slide-07",
+      "file": "slides/slide-07.html",
+      "title": "Promptever Tahmin Etmez, Hatırlar",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever olasılık tahminleri üretmekten çok, geçmişte yaşanmış deneyim zincirlerini hatırlar.</p><p><strong>Vurgu:</strong> Hatırlayan sistemler daha tutarlı ve daha düşük riskli kararlar üretir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 8
+    },
+    {
+      "id": "slide-08",
+      "file": "slides/slide-08.html",
+      "title": "Veriden Bilgeliğe: Deneyim Zinciri",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Kurumsal deneyim yalnızca insanlarla sınırlı değildir.</p><p><strong>Vurgu:</strong> İnsanlar, makineler, süreçler ve projeler aynı hafıza içinde bağlanarak bütüncül bir bilgi yapısı oluşturur.</p>",
+      "audiences": [
+        "technical"
+      ],
+      "order": 9
+    },
+    {
+      "id": "slide-09",
+      "file": "slides/slide-09.html",
+      "title": "Kök Neden Nerede Saklı?",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Deneyim hafızası, geçmişte yaşanmış benzer durumları hatırlayarak kök nedenleri görünür kılar.</p><p><strong>Vurgu:</strong> Bu yaklaşım, belirsiz tahminler yerine somut aksiyonlar üretir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 10
+    },
+    {
+      "id": "slide-10",
+      "file": "slides/slide-10.html",
+      "title": "Generative AI vs. Kurumsal Hafıza + AI",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Genel amaçlı yapay zekâ herkes için erişilebilir olabilir.</p><p><strong>Vurgu:</strong> Kuruma özgü zekâ, ancak kurumsal hafıza ile anlam kazanır.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 11
+    },
+    {
+      "id": "slide-11",
+      "file": "slides/slide-11.html",
+      "title": "Tek Hafıza, Çoklu Anlamlandırma",
+      "group": "cozum",
+      "explanation": "<p><strong>Ana mesaj:</strong> Aynı kurumsal gerçeklik, farklı roller tarafından farklı şekillerde anlamlandırılabilir.</p><p><strong>Vurgu:</strong> Ortak hafıza, bu farklı bakış açılarını uyumlu hale getirir.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 12
+    },
+    {
+      "id": "slide-12",
+      "file": "slides/slide-12.html",
+      "title": "3 Çekirdekli Mimari",
+      "group": "mimari",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever mimarisi, değer üretiminin doğru sırayla inşa edilmesini hedefler.</p><p><strong>Vurgu:</strong> Hafıza çekirdeği tek başına değer üretir; zekâ ve içgörü katmanları bu temelin üzerine kademeli olarak eklenir.</p>",
+      "audiences": [
+        "investor",
+        "technical"
+      ],
+      "order": 13
+    },
+    {
+      "id": "slide-13",
+      "file": "slides/slide-13.html",
+      "title": "Ürün Olgunluğu: Production-Ready MVP",
+      "group": "mimari",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever’ın hafıza çekirdeği üretim ortamında çalışmaya hazırdır.</p><p><strong>Vurgu:</strong> Mimari, belirli bir teknolojiye veya modele bağımlı değildir.</p>",
+      "audiences": [
+        "investor",
+        "technical"
+      ],
+      "order": 14
+    },
+    {
+      "id": "slide-14",
+      "file": "slides/slide-14.html",
+      "title": "Teknoloji Riski: MVP Kanıtlanmış",
+      "group": "mimari",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever, teknik riskleri azaltılmış bir MVP seviyesinde doğrulanmıştır.</p><p><strong>Vurgu:</strong> Bu doğrulama, erken aşamada değer üretimini mümkün kılar.</p>",
+      "audiences": [
+        "investor",
+        "technical"
+      ],
+      "order": 15
+    },
+    {
+      "id": "slide-15",
+      "file": "slides/slide-15.html",
+      "title": "Kurumsal AI Ekosisteminde Konum",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever, mevcut kurumsal AI ekosistemindeki araçların yerine geçmez.</p><p><strong>Vurgu:</strong> Eksik olan deneyim hafızası katmanını tamamlar.</p>",
+      "audiences": [
+        "investor",
+        "marketing"
+      ],
+      "order": 16
+    },
+    {
+      "id": "slide-16",
+      "file": "slides/slide-16.html",
+      "title": "Sektör Stratejisi: Odaklanmış Büyüme",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> İlk odak alanı, yüksek regülasyon ve tekrar eden karar ihtiyacı olan sektörlerdir.</p><p><strong>Vurgu:</strong> Bu odak, hızlı öğrenme ve erken değer üretimini sağlar.</p>",
+      "audiences": [
+        "investor",
+        "marketing"
+      ],
+      "order": 17
+    },
+    {
+      "id": "slide-17",
+      "file": "slides/slide-17.html",
+      "title": "Hafıza Kurumun, Model Misafir",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> Yapay zekâ modelleri değişebilir; kurumsal hafıza kurumun kalıcı varlığıdır.</p><p><strong>Vurgu:</strong> Bu yaklaşım, teknoloji bağımlılığını azaltır.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 18
+    },
+    {
+      "id": "slide-18",
+      "file": "slides/slide-18.html",
+      "title": "SAM/SOM: İlk 24 Ay Hedef Pazar",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> İlk 24 ayda hedef pazar bilinçli olarak dar tutulur.</p><p><strong>Vurgu:</strong> Amaç, hızlı ölçeklenme değil, doğrulanmış öğrenmedir.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 19
+    },
+    {
+      "id": "slide-19",
+      "file": "slides/slide-19.html",
+      "title": "$39 Milyar: Anlam Tutarlılığı",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> Kurumsal dünyada BI, MDM ve bilgi yönetimi arasında çözülememiş bir anlam katmanı bulunmaktadır.</p><p><strong>Vurgu:</strong> Yapay zekâ bu boşluğu daha görünür hale getirmiştir.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 20
+    },
+    {
+      "id": "slide-20",
+      "file": "slides/slide-20.html",
+      "title": "Rakip Değil, Tamamlayıcı: Kayıp Halka",
+      "group": "pazar",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever, mevcut kurumsal yatırımları değersizleştirmek yerine onların etkinliğini artırır.</p><p><strong>Vurgu:</strong> Ekosistemde eksik olan katmanı tamamlar.</p>",
+      "audiences": [
+        "investor",
+        "marketing"
+      ],
+      "order": 21
+    },
+    {
+      "id": "slide-21",
+      "file": "slides/slide-21.html",
+      "title": "Bağlamdan Başlayan, Zamana Yayılan Ölçek",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever, önce derin kurumsal bağlam oluşturur.</p><p><strong>Vurgu:</strong> Standartlaşma ve platformlaşma bu temelin üzerine zamana yayılarak inşa edilir.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 22
+    },
+    {
+      "id": "slide-22",
+      "file": "slides/slide-22.html",
+      "title": "24 Aylık Finansal Projeksiyon",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Finansal projeksiyonlar, hayatta kalma değil doğrulama odaklıdır.</p><p><strong>Vurgu:</strong> 24 aylık dönem, ürün–pazar uyumunu netleştirmeyi hedefler.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 23
+    },
+    {
+      "id": "slide-23",
+      "file": "slides/slide-23.html",
+      "title": "Müşteri Kazanım Stratejisi",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> İlk müşteriler, gelirden çok öğrenme ve referans değeri taşır.</p><p><strong>Vurgu:</strong> Müşteri kazanımı, kademeli ve kontrollü ilerler.</p>",
+      "audiences": [
+        "investor",
+        "marketing"
+      ],
+      "order": 24
+    },
+    {
+      "id": "slide-24",
+      "file": "slides/slide-24.html",
+      "title": "Ekip Genişletme: $600K ile Hızlı Büyüme",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Ekip büyümesi kontrollü ve net bir yol haritasına dayanır.</p><p><strong>Vurgu:</strong> Amaç hızlı büyüme değil, sürdürülebilir yapı kurmaktır.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 25
+    },
+    {
+      "id": "slide-25",
+      "file": "slides/slide-25.html",
+      "title": "Expansion Stratejisi: MENA, EU, Global",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Uluslararası genişleme, doğrulanmış öğrenmenin ardından planlanır.</p><p><strong>Vurgu:</strong> Türkiye, ilk öğrenme ve referans pazarıdır.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 26
+    },
+    {
+      "id": "slide-26",
+      "file": "slides/slide-26.html",
+      "title": "Kademeli Gelir Modeli",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Gelir modeli, öğrenme ve değer üretimiyle birlikte kademeli olarak gelişir.</p><p><strong>Vurgu:</strong> İlk aşamada nakit akışı, uzun vadede ölçeklenebilirlik hedeflenir.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 27
+    },
+    {
+      "id": "slide-27",
+      "file": "slides/slide-27.html",
+      "title": "Tohum Yatırımı Talebi",
+      "group": "yatirim",
+      "explanation": "<p><strong>Ana mesaj:</strong> Talep edilen yatırım, 24 aylık bir doğrulama ve derinleşme süresini finanse eder.</p><p><strong>Vurgu:</strong> Bu süre, ürünü ve pazarı birlikte olgunlaştırmayı hedefler.</p>",
+      "audiences": [
+        "investor"
+      ],
+      "order": 29
+    },
+    {
+      "id": "slide-28",
+      "file": "slides/slide-28.html",
+      "title": "Kurucu Ekip: Deneyim + Vizyon",
+      "group": "ekip",
+      "explanation": "<p><strong>Ana mesaj:</strong> Kurucu ekip, teknik derinlik ile iş geliştirme bakışını bir araya getirir.</p><p><strong>Vurgu:</strong> Bu denge, erken aşama riskleri azaltır.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 30
+    },
+    {
+      "id": "slide-30",
+      "file": "slides/slide-30.html",
+      "title": "Modelde Değil, Anlamdadır.",
+      "group": "kapani",
+      "explanation": "<p><strong>Ana mesaj:</strong> Yapay zekâ modelleri herkes için erişilebilir olabilir.</p><p><strong>Vurgu:</strong> Gerçek rekabet avantajı, kurumun kendi anlam ve deneyim hafızasında yatar.</p>",
+      "audiences": [
+        "all"
+      ],
+      "order": 31
+    },
+    {
+      "id": "slide-31",
+      "file": "slides/slide-31.html",
+      "title": "Esneklik ve Veri Egemenliği",
+      "group": "strateji",
+      "explanation": "<p><strong>Ana mesaj:</strong> Promptever, müşterinin veri egemenliğini merkeze alır.</p><p><strong>Vurgu:</strong> Kurumlar, diledikleri zaman verileriyle bağımsız hareket edebilir.</p>",
+      "audiences": [
+        "technical",
+        "marketing",
+        "investor",
+        "all"
+      ],
+      "order": 28
+    }
+  ],
+  "tracks": {
+    "default": {
+      "name": "default",
+      "slides": {
+        "mode": "all"
+      },
+      "label_tr": "Tüm Anlatı"
+    },
+    "investor_pitch": {
+      "name": "investor_pitch",
+      "slides": [
+        "slide-00",
+        "slide-01",
+        "slide-02",
+        "slide-03",
+        "slide-04",
+        "slide-05",
+        "slide-07",
+        "slide-09",
+        "slide-10",
+        "slide-11",
+        "slide-12",
+        "slide-13",
+        "slide-14",
+        "slide-15",
+        "slide-16",
+        "slide-17",
+        "slide-18",
+        "slide-19",
+        "slide-20",
+        "slide-21",
+        "slide-22",
+        "slide-23",
+        "slide-24",
+        "slide-25",
+        "slide-26",
+        "slide-31",
+        "slide-27",
+        "slide-28",
+        "slide-30"
+      ],
+      "label_tr": "Yatırımcı Anlatısı"
+    },
+    "mvp_demo": {
+      "name": "mvp_demo",
+      "slides": [
+        "slide-05",
+        "slide-06",
+        "slide-13",
+        "slide-14",
+        "slide-31",
+        "slide-30"
+      ],
+      "label_tr": "Çalışan MVP (Kanıt)"
+    },
+    "how_it_works": {
+      "name": "how_it_works",
+      "slides": [
+        "slide-06",
+        "slide-08",
+        "slide-12",
+        "slide-31",
+        "slide-14",
+        "slide-30"
+      ],
+      "label_tr": "Nasıl Çalışır?"
+    }
+  },
+  "track_labels_tr": {
+    "default": "Tüm Anlatı",
+    "investor_pitch": "Yatırımcı Anlatısı",
+    "mvp_demo": "Çalışan MVP (Kanıt)",
+    "how_it_works": "Nasıl Çalışır?"
+  }
+}

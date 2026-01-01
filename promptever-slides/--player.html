@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promptever - Sunum Oynatıcı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        /* Player Specific Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--white);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Main Layout */
+        .player-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Navigation Sidebar */
+        .nav-sidebar {
+            width: 320px;
+            background: var(--bg-secondary);
+            border-right: 1px solid rgba(0, 212, 212, 0.2);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, width 0.3s ease;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .nav-sidebar.collapsed {
+            transform: translateX(-320px);
+        }
+
+        .nav-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 212, 212, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-logo span {
+            color: var(--cyan);
+        }
+
+        .nav-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .nav-group {
+            margin-bottom: 1rem;
+        }
+
+        .nav-group-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--cyan);
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-group-title:hover {
+            background: rgba(0, 212, 212, 0.1);
+        }
+
+        .nav-group-items {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-item {
+            padding: 0.6rem 0.75rem 0.6rem 1.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 212, 212, 0.1);
+            color: var(--white);
+        }
+
+        .nav-item.active {
+            background: rgba(0, 212, 212, 0.2);
+            color: var(--cyan);
+            border-left: 3px solid var(--cyan);
+        }
+
+        /* Toggle Button for Nav */
+        .nav-toggle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 64px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 212, 212, 0.3);
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+            color: var(--cyan);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 101;
+            transition: left 0.3s ease;
+        }
+
+        .nav-toggle.shifted {
+            left: 320px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-left: 320px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        /* Slide Container */
+        .slide-container {
+            flex: 1;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .slide-content {
+            min-height: 100%;
+        }
+
+        /* Explanation Panel */
+        .explanation-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 60px;
+            width: 400px;
+            background: var(--bg-secondary);
+            border-left: 1px solid rgba(0, 212, 212, 0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explanation-panel.open {
+            transform: translateX(0);
+        }
+
+        .explanation-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 212, 212, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .explanation-header h3 {
+            color: var(--cyan);
+            font-size: 1rem;
+        }
+
+        .explanation-content {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray-300);
+        }
+
+        .explanation-content p {
+            margin-bottom: 1rem;
+        }
+
+        .explanation-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .explanation-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Toggle Button for Explanation */
+        .explanation-toggle {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 64px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 212, 212, 0.3);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            color: var(--cyan);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 101;
+            transition: right 0.3s ease;
+        }
+
+        .explanation-toggle.shifted {
+            right: 400px;
+        }
+
+        /* Bottom Controls */
+        .controls {
+            height: 60px;
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(0, 212, 212, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 2rem;
+            position: fixed;
+            bottom: 0;
+            left: 320px;
+            right: 0;
+            z-index: 99;
+            transition: left 0.3s ease;
+        }
+
+        .controls.expanded {
+            left: 0;
+        }
+
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 212, 212, 0.1);
+            border: 1px solid var(--cyan);
+            border-radius: 50%;
+            color: var(--cyan);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--cyan);
+            color: var(--bg-primary);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--gray-300);
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .slide-counter span {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        /* Close Button */
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--gray-300);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--white);
+        }
+
+        /* Keyboard Shortcuts Info */
+        .shortcuts-info {
+            position: fixed;
+            bottom: 70px;
+            right: 1rem;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .shortcuts-info kbd {
+            background: var(--bg-secondary);
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            border: 1px solid var(--gray-500);
+            margin: 0 0.1rem;
+        }
+
+        /* No explanation state */
+        .no-explanation {
+            color: var(--gray-500);
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Track Filter */
+        .track-filter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0, 212, 212, 0.2);
+        }
+
+        .track-label {
+            font-size: 0.7rem;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .track-select {
+            flex: 1;
+            padding: 0.35rem 0.6rem;
+            font-size: 0.75rem;
+            background: transparent;
+            border: 1px solid var(--gray-500);
+            color: var(--gray-100);
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .track-select:focus {
+            border-color: var(--cyan);
+        }
+
+/* Audience Filter */
+        .audience-filter {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0, 212, 212, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .audience-btn {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.7rem;
+            background: transparent;
+            border: 1px solid var(--gray-500);
+            color: var(--gray-300);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .audience-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .audience-btn.active {
+            background: var(--cyan);
+            border-color: var(--cyan);
+            color: var(--bg-primary);
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--gray-500);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 212, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 212, 212, 0.5);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: var(--bg-primary);
+        }
+
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 212, 212, 0.3) var(--bg-primary);
+        }
+
+        /* Grid background - slide içinde göster */
+        .slide-content .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 212, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <!-- Navigation Sidebar -->
+        <nav class="nav-sidebar" id="navSidebar">
+            <div class="nav-header">
+                <div class="nav-logo">Prompt<span>ever</span></div>
+                <button class="close-btn" onclick="toggleNav()">×</button>
+            </div>
+            <div class="audience-filter" id="audienceFilter">
+                <button class="audience-btn active" data-audience="all">Tümü</button>
+                <button class="audience-btn" data-audience="investor">Yatırımcı</button>
+                <button class="audience-btn" data-audience="technical">Teknik</button>
+                <button class="audience-btn" data-audience="marketing">Marketing</button>
+            </div>
+            <div class="track-filter" id="trackFilter">
+                <label class="track-label" for="trackSelect">Akış</label>
+                <select id="trackSelect" class="track-select">
+                    <option value="default">Tüm Anlatı</option>
+                </select>
+            </div>
+
+            <div class="nav-content" id="navContent">
+                <!-- Dynamically populated -->
+            </div>
+        </nav>
+
+        <!-- Nav Toggle Button -->
+        <button class="nav-toggle shifted" id="navToggle" onclick="toggleNav()">☰</button>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <div class="slide-container">
+                <div class="grid-bg"></div>
+                <div class="slide-content" id="slideContent">
+                    <div class="loading">Yükleniyor...</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Explanation Panel -->
+        <aside class="explanation-panel" id="explanationPanel">
+            <div class="explanation-header">
+                <h3>📝 Anlatım Notları</h3>
+                <button class="close-btn" onclick="toggleExplanation()">×</button>
+            </div>
+            <div class="explanation-content" id="explanationContent">
+                <!-- Dynamically populated -->
+            </div>
+        </aside>
+
+        <!-- Explanation Toggle Button -->
+        <button class="explanation-toggle" id="explanationToggle" onclick="toggleExplanation()">📝</button>
+
+        <!-- Bottom Controls -->
+        <div class="controls" id="controls">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">0</span>
+            </div>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
+        </div>
+
+        <div class="shortcuts-info">
+            <kbd>←</kbd> <kbd>→</kbd> Gezinti &nbsp;|&nbsp;
+            <kbd>N</kbd> Menü &nbsp;|&nbsp;
+            <kbd>E</kbd> Notlar
+        </div>
+    </div>
+
+    <script>
+        // State
+        let presentationData = null;
+        let currentIndex = 0;
+        let filteredSlides = [];
+        let baseSlides = [];
+        let currentAudience = 'all';
+        let currentTrack = 'default';
+
+        // DOM Elements
+        const navSidebar = document.getElementById('navSidebar');
+        const navToggle = document.getElementById('navToggle');
+        const mainContent = document.getElementById('mainContent');
+        const controls = document.getElementById('controls');
+        const explanationPanel = document.getElementById('explanationPanel');
+        const explanationToggle = document.getElementById('explanationToggle');
+        const slideContent = document.getElementById('slideContent');
+        const explanationContent = document.getElementById('explanationContent');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const navContent = document.getElementById('navContent');
+        const trackSelect = document.getElementById('trackSelect');
+        const audienceFilterEl = document.getElementById('audienceFilter');
+
+        // Initialize
+        async function init() {
+            try {
+                const response = await fetch('presentation.json');
+                presentationData = await response.json();
+                
+                // Setup audience / track filters
+                setupAudienceFilter();
+                setupTrackFilter();
+                updateAudienceVisibility();
+
+                // Build base slide list + filter
+                applyFilters();
+                renderNavigation();
+                loadSlide(0);
+            } catch (error) {
+                console.error('Error loading presentation:', error);
+                slideContent.innerHTML = '<div class="loading">Sunum yüklenemedi. presentation.json dosyasını kontrol edin.</div>';
+            }
+        }
+
+        // Apply track + audience filters
+        
+        // Order slides by presentation group order (narrative order)
+        function orderSlidesByGroups(slides, groups) {
+            const slideMap = new Map(slides.map(s => [s.id, s]));
+            const ordered = [];
+
+            // Iterate groups in declared order
+            for (const group of Object.values(groups || {})) {
+                if (!group || !Array.isArray(group.slides)) continue;
+
+                for (const slideId of group.slides) {
+                    const slide = slideMap.get(slideId);
+                    if (slide) {
+                        ordered.push(slide);
+                        slideMap.delete(slideId);
+                    }
+                }
+            }
+
+            // Append any slides not listed in groups (safety fallback)
+            for (const slide of slideMap.values()) {
+                ordered.push(slide);
+            }
+
+            return ordered;
+        }
+
+        // A track can represent "all slides" either via track.mode === 'all'
+        // or via track.slides.mode === 'all' (as in presentation.json).
+        function isAllSlidesTrack(track) {
+            if (!track) return true;
+            if (track.mode === 'all') return true;
+            if (track.slides && typeof track.slides === 'object' && track.slides.mode === 'all') return true;
+            return false;
+        }
+
+function applyFilters() {
+            // 1) Track selection → baseSlides
+            if (presentationData && presentationData.tracks && presentationData.tracks[currentTrack]) {
+                const track = presentationData.tracks[currentTrack];
+                if (isAllSlidesTrack(track)) {
+                    baseSlides = [...presentationData.slides];
+                } else if (track && Array.isArray(track.slides)) {
+                    const byId = new Map(presentationData.slides.map(s => [s.id, s]));
+                    baseSlides = track.slides.map(id => byId.get(id)).filter(Boolean);
+                } else {
+                    baseSlides = [...presentationData.slides];
+                }
+            } else {
+                baseSlides = [...presentationData.slides];
+            }
+
+            // 2) Audience selection → filteredSlides
+            if (currentAudience === 'all') {
+                filteredSlides = [...baseSlides];
+            } else {
+                filteredSlides = baseSlides.filter(slide =>
+                    (slide.audiences || []).includes('all') || (slide.audiences || []).includes(currentAudience)
+                );
+            }
+
+            // 3) Ordering
+            // - For "all slides" tracks, use narrative order from groups.
+            // - For curated tracks (explicit slide lists), preserve track order.
+            const activeTrack = (presentationData && presentationData.tracks) ? presentationData.tracks[currentTrack] : null;
+            if (isAllSlidesTrack(activeTrack)) {
+                filteredSlides = orderSlidesByGroups(filteredSlides, presentationData.groups);
+            }
+
+            totalSlidesEl.textContent = filteredSlides.length;
+        }
+
+
+        // Setup track selector
+        function setupTrackFilter() {
+            if (!presentationData || !presentationData.tracks) return;
+
+            // Build options
+            const tracks = presentationData.tracks;
+            // Clear existing (keep default)
+            trackSelect.innerHTML = '';
+
+            // Ensure default exists
+            const hasDefault = !!tracks.default;
+            const orderedKeys = [];
+            if (hasDefault) orderedKeys.push('default');
+            for (const k of Object.keys(tracks)) {
+                if (k !== 'default') orderedKeys.push(k);
+            }
+
+            orderedKeys.forEach(key => {
+                const t = tracks[key];
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = (t && (t.label_tr || t.name)) ? (t.label_tr || t.name) : key;
+                trackSelect.appendChild(opt);
+            });
+
+            trackSelect.value = currentTrack;
+
+            trackSelect.addEventListener('change', () => {
+                currentTrack = trackSelect.value;
+                updateAudienceVisibility();
+                applyFilters();
+                renderNavigation();
+                currentIndex = 0;
+                loadSlide(0);
+            });
+        }
+
+// Setup audience filter buttons
+        function setupAudienceFilter() {
+            const buttons = document.querySelectorAll('.audience-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentAudience = btn.dataset.audience;
+                    applyFilters();
+                    renderNavigation();
+                    currentIndex = 0;
+                    loadSlide(0);
+                });
+            });
+        }
+
+        // Show audience filter only in default (free navigation) track.
+        function updateAudienceVisibility() {
+            if (!audienceFilterEl) return;
+            const show = (currentTrack === 'default');
+            audienceFilterEl.style.display = show ? 'flex' : 'none';
+
+            // When using a curated track, force audience to "all" to avoid double-filter confusion.
+            if (!show && currentAudience !== 'all') {
+                currentAudience = 'all';
+                const buttons = audienceFilterEl.querySelectorAll('.audience-btn');
+                buttons.forEach(b => b.classList.remove('active'));
+                const allBtn = audienceFilterEl.querySelector('[data-audience="all"]');
+                if (allBtn) allBtn.classList.add('active');
+            }
+        }
+
+
+        // Render navigation
+        function renderNavigation() {
+            const groups = presentationData.groups;
+            let html = '';
+
+            for (const [groupId, group] of Object.entries(groups)) {
+                const groupSlides = filteredSlides.filter(slide => slide.group === groupId);
+                if (groupSlides.length === 0) continue;
+
+                html += `
+                    <div class="nav-group">
+                        <div class="nav-group-title">${group.name}</div>
+                        <div class="nav-group-items">
+                            ${groupSlides.map(slide => {
+                                const idx = filteredSlides.indexOf(slide);
+                                return `<div class="nav-item" data-index="${idx}" onclick="goToSlide(${idx})">${slide.title}</div>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            navContent.innerHTML = html;
+        }
+
+        // Load slide
+        async function loadSlide(index) {
+            if (index < 0 || index >= filteredSlides.length) return;
+            
+            currentIndex = index;
+            const slide = filteredSlides[index];
+            
+            try {
+                const response = await fetch(slide.file);
+                const html = await response.text();
+                slideContent.innerHTML = html;
+                
+                // Update UI
+                currentSlideEl.textContent = index + 1;
+                
+                // Update navigation highlight
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                    if (parseInt(item.dataset.index) === index) {
+                        item.classList.add('active');
+                        item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                    }
+                });
+                
+                // Update explanation
+                if (slide.explanation && slide.explanation.trim()) {
+                    explanationContent.innerHTML = slide.explanation;
+                } else {
+                    explanationContent.innerHTML = '<div class="no-explanation">Bu slide için anlatım notu eklenmemiş.</div>';
+                }
+                
+                // Update button states
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === filteredSlides.length - 1;
+                
+            } catch (error) {
+                console.error('Error loading slide:', error);
+                slideContent.innerHTML = `<div class="loading">Slide yüklenemedi: ${slide.file}</div>`;
+            }
+        }
+
+        // Navigation functions
+        function nextSlide() {
+            if (currentIndex < filteredSlides.length - 1) {
+                loadSlide(currentIndex + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                loadSlide(currentIndex - 1);
+            }
+        }
+
+        function goToSlide(index) {
+            loadSlide(index);
+        }
+
+        // Toggle functions
+        function toggleNav() {
+            navSidebar.classList.toggle('collapsed');
+            navToggle.classList.toggle('shifted');
+            mainContent.classList.toggle('expanded');
+            controls.classList.toggle('expanded');
+        }
+
+        function toggleExplanation() {
+            explanationPanel.classList.toggle('open');
+            explanationToggle.classList.toggle('shifted');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'n':
+                case 'N':
+                    toggleNav();
+                    break;
+                case 'e':
+                case 'E':
+                    toggleExplanation();
+                    break;
+                case 'Home':
+                    loadSlide(0);
+                    break;
+                case 'End':
+                    loadSlide(filteredSlides.length - 1);
+                    break;
+            }
+        });
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

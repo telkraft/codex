@@ -1,0 +1,41 @@
+<section class="slide" id="architecture">
+        <h2 class="section-title">3 Çekirdekli <span>Mimari</span></h2>
+        <p class="section-subtitle">Katmanlı değer üretimi ve sürekli öğrenme döngüsü.</p>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="arch-layer arch-layer-dark">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div>
+                        <h4 class="arch-title">İçgörü Çekirdeği</h4>
+                        <p style="color: var(--gray-300); font-size: 0.9rem;">Öngörüleri doğrular, doğrulanmış içgörüleri hafızaya kaydeder.</p>
+                    </div>
+                    <div class="arch-tech">W3C JSON-LD • Knowledge Graph • Graph RAG</div>
+                </div>
+            </div>
+
+            <div class="arch-arrow">↓ Zekâ Çekirdeği gerektirir</div>
+
+            <div class="arch-layer arch-layer-dark">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div>
+                        <h4 class="arch-title">Zekâ Çekirdeği</h4>
+                        <p style="color: var(--gray-300); font-size: 0.9rem;">Hafızadan analiz ve öngörü üretir.</p>
+                    </div>
+                    <div class="arch-tech">LLM + Opsiyonel RAG + Opsiyonel W3C JSON-LD</div>
+                </div>
+            </div>
+
+            <div class="arch-arrow">↓ Hafıza Çekirdeği gerektirir</div>
+
+            <div class="arch-layer arch-layer-cyan">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div>
+                        <h4 class="arch-title" style="color: var(--cyan);">Hafıza Çekirdeği</h4>
+                        <p style="color: var(--gray-300); font-size: 0.9rem;">Ontolojiye göre üretilmiş deneyim ve olay kayıtları.</p>
+                        <div class="arch-note">AI olmadan da analiz ve ROI üretir</div>
+                    </div>
+                    <div class="arch-tech" style="color: var(--cyan);">IEEE xAPI (9274.1.1)</div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,135 @@
+    <section class="slide">
+        <h2 class="section-title">Esneklik ve <span>Veri Egemenliği</span></h2>
+        <p class="section-subtitle">Müşteri, LLM'ini ve hafızasını istediği yerde tutar. Sıfır vendor lock-in.</p>
+
+        <div style="max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Ana Mesaj -->
+            <div class="quote-box" style="margin-bottom: 3rem; font-size: 1.15rem;">
+                "Promptever, müşterinin verilerine ve hafızasına asla sahip olmaz. Müşteri, LLM'ini, hafızasını ve altyapısını istediği zaman değiştirebilir."
+            </div>
+
+            <!-- İki Ana Esneklik -->
+            <div class="grid-2" style="gap: 2rem; margin-bottom: 3rem;">
+                
+                <!-- LLM Esnekliği -->
+                <div class="card" style="border-left: 4px solid var(--cyan);">
+                    <h3 style="color: var(--cyan); font-size: 1.5rem; margin-bottom: 1.5rem;">🧠 LLM Esnekliği</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        Müşteri, yapay zeka modelini kendisi seçer:
+                    </p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: rgba(0, 212, 212, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">BYOM (Bring Your Own Model)</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Kendi lokal LLM'i (Ollama, LLaMA, Mistral vb.)</p>
+                        </div>
+                        
+                        <div style="background: rgba(0, 212, 212, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">BYOK (Bring Your Own Key)</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Kendi lisanslı LLM'i (OpenAI, Azure, Anthropic vb.)</p>
+                        </div>
+                        
+                        <div style="background: rgba(0, 212, 212, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">Managed LLM</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Promptever'ın sağladığı LLM (isteğe bağlı)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hafıza Esnekliği -->
+                <div class="card" style="border-left: 4px solid var(--pink);">
+                    <h3 style="color: var(--pink); font-size: 1.5rem; margin-bottom: 1.5rem;">💾 Hafıza Esnekliği</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        Müşteri, kurumsal hafızasını nerede tutacağını seçer:
+                    </p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: rgba(255, 51, 102, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">Managed Cloud</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Promptever'ın altyapısında (LRS + RAG + Vector DB)</p>
+                        </div>
+                        
+                        <div style="background: rgba(255, 51, 102, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">Self-Hosted</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Müşterinin kendi sunucularında (tam veri kontrolü)</p>
+                        </div>
+                        
+                        <div style="background: rgba(255, 51, 102, 0.1); padding: 1rem; border-radius: 8px;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">Hybrid</h4>
+                            <p style="font-size: 0.85rem; color: var(--gray-300);">Kısmen Promptever'da, kısmen müşteride</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dağıtım Modelleri Tablosu -->
+            <div class="card" style="background: var(--bg-secondary); border: 1px solid rgba(0, 212, 212, 0.2); margin-bottom: 2rem;">
+                <h3 style="color: var(--white); font-size: 1.25rem; margin-bottom: 1.5rem; text-align: center;">Dağıtım Modelleri</h3>
+                
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid rgba(0, 212, 212, 0.3);">
+                                <th style="padding: 1rem; text-align: left; color: var(--cyan);">Model</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--cyan);">LLM</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--cyan);">Hafıza</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--cyan);">Altyapı</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--cyan);">Hedef Müşteri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                <td style="padding: 1rem; color: var(--white); font-weight: 600;">Managed Cloud</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">BYOM/BYOK/Managed</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Promptever'da</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Promptever'da</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Filo, Lojistik</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                <td style="padding: 1rem; color: var(--white); font-weight: 600;">Self-Hosted</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">BYOM/BYOK</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Müşteride</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Müşteride</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Savunma, Enerji</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; color: var(--white); font-weight: 600;">Hybrid</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">BYOM/BYOK/Managed</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Kısmen her ikisi</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Kısmen her ikisi</td>
+                                <td style="padding: 1rem; color: var(--gray-300);">Büyük Kurumlar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Açık Standartlar ve Veri Taşınabilirliği -->
+            <div class="grid-2" style="gap: 2rem;">
+                
+                <div class="card" style="border-left: 4px solid var(--green);">
+                    <h3 style="color: var(--green); font-size: 1.25rem; margin-bottom: 1rem;">📖 Açık Standartlar</h3>
+                    <ul class="feature-list" style="font-size: 0.9rem; color: var(--gray-300);">
+                        <li>xAPI (IEEE 9274.1.1-2023)</li>
+                        <li>JSON-LD (W3C Standardı)</li>
+                        <li>Açık kaynak bileşenler (N8N, MongoDB, Qdrant)</li>
+                        <li>Standart API'ler (REST, GraphQL)</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 4px solid var(--yellow);">
+                    <h3 style="color: var(--yellow); font-size: 1.25rem; margin-bottom: 1rem;">🔓 Veri Taşınabilirliği</h3>
+                    <ul class="feature-list" style="font-size: 0.9rem; color: var(--gray-300);">
+                        <li>Müşteri istediği zaman verilerini export edebilir</li>
+                        <li>Müşteri istediği zaman kendi sunucusuna taşıyabilir</li>
+                        <li>Müşteri istediği zaman başka bir LLM'e geçebilir</li>
+                        <li>Müşteri istediği zaman Promptever'dan ayrılabilir</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
