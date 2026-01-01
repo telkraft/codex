@@ -1,0 +1,204 @@
+{
+  "$id": "https://promptever.com/schema/man-service-schema-v1",
+  "description": "MAN Türkiye servis bakım/onarım kayıtları için xAPI tabanlı deneyim şeması",
+  "version": "1.0.0",
+  "dimensions": {
+    "serviceLocation": {
+      "source_column": "servis",
+      "activity_prefix": "https://promptever.com/activities/service-location/",
+      "xapi_path": "context.contextActivities.grouping",
+      "labels": {
+        "tr": "Servis Noktası",
+        "en": "Service Location"
+      },
+      "aliases": ["servis", "servis noktası", "service", "workshop"]
+    },
+    "customer": {
+      "source_column": "musteri",
+      "activity_prefix": "https://promptever.com/activities/customer/",
+      "xapi_path": "context.contextActivities.grouping",
+      "labels": {
+        "tr": "Müşteri",
+        "en": "Customer"
+      },
+      "aliases": ["müşteri", "musteri", "customer", "client"]
+    },
+    "vehicleId": {
+      "source_column": "arac",
+      "account_prefix": "vehicle/",
+      "xapi_path": "actor.account.name",
+      "labels": {
+        "tr": "Araç ID",
+        "en": "Vehicle ID"
+      },
+      "aliases": ["araç", "arac", "vehicle", "plate"]
+    },
+    "vehicleType": {
+      "source_column": "arac_tipi",
+      "extension": "https://promptever.com/extensions/vehicleType",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "Araç Tipi",
+        "en": "Vehicle Type"
+      },
+      "aliases": ["araç tipi", "arac tipi", "vehicle type", "bus tipi"]
+    },
+    "vehicleModel": {
+      "source_column": "modelno",
+      "extension": "https://promptever.com/extensions/modelNo",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "Araç Modeli",
+        "en": "Vehicle Model"
+      },
+      "aliases": ["model", "model no", "araç modeli"]
+    },
+    "operationType": {
+      "source_column": "islemturu",
+      "verb_iri_base": "https://promptever.com/verbs/",
+      "labels": {
+        "tr": "İşlem Türü",
+        "en": "Operation Type"
+      },
+      "aliases": ["işlem türü", "islemturu", "bakım", "onarım", "maintenance", "repair"]
+    },
+    "operationSubType": {
+      "source_column": "tur",
+      "extension": "https://promptever.com/extensions/operationCategory",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "İşlem Alt Türü",
+        "en": "Operation Category"
+      },
+      "aliases": ["tur", "iş türü", "operation category"]
+    },
+    "material": {
+      "source_columns": ["malzeme_kodu", "malzeme_adi"],
+      "activity_prefix": "https://promptever.com/activities/material/",
+      "xapi_path": "object",
+      "labels": {
+        "tr": "Malzeme / Parça",
+        "en": "Material / Part"
+      },
+      "aliases": ["malzeme", "parça", "yedek parça", "material", "part"]
+    },
+    "faultCode": {
+      "source_column": "arizakodu",
+      "extension": "https://promptever.com/extensions/faultCode",
+      "xapi_path": "result.extensions",
+      "labels": {
+        "tr": "Arıza Kodu",
+        "en": "Fault Code"
+      },
+      "aliases": ["arıza kodu", "ariza kodu", "fault code", "error code"]
+    },
+    "stockType": {
+      "source_column": "stokturu",
+      "extension": "https://promptever.com/extensions/stockType",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "Stok Türü",
+        "en": "Stock Type"
+      },
+      "aliases": ["stokturu", "stok türü", "stock type"]
+    },
+    "manufacturer": {
+      "source_column": "uretici",
+      "extension": "https://promptever.com/extensions/manufacturer",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "Üretici",
+        "en": "Manufacturer"
+      },
+      "aliases": ["uretici", "üretici", "manufacturer", "producer"]
+    }
+  },
+  "metrics": {
+    "materialCost": {
+      "source_column": "tutar",
+      "extension": "https://promptever.com/extensions/materialCost",
+      "xapi_path": "result.extensions",
+      "aggregation": "sum",
+      "labels": {
+        "tr": "Malzeme Tutarı",
+        "en": "Material Cost"
+      }
+    },
+    "materialQuantity": {
+      "source_column": "miktar",
+      "extension": "https://promptever.com/extensions/materialQuantity",
+      "xapi_path": "result.extensions",
+      "aggregation": "sum",
+      "labels": {
+        "tr": "Malzeme Miktarı",
+        "en": "Material Quantity"
+      }
+    },
+    "discountAmount": {
+      "source_column": "indirimlitutar",
+      "extension": "https://promptever.com/extensions/discountAmount",
+      "xapi_path": "result.extensions",
+      "aggregation": "sum",
+      "labels": {
+        "tr": "İndirimli Tutar",
+        "en": "Discounted Amount"
+      }
+    },
+    "odometerReading": {
+      "source_column": "km",
+      "extension": "https://promptever.com/extensions/odometerReading",
+      "xapi_path": "result.extensions",
+      "aggregation": "avg",
+      "labels": {
+        "tr": "Kilometre",
+        "en": "Odometer Reading"
+      }
+    }
+  },
+  "context": {
+    "workOrder": {
+      "source_column": "isemirno",
+      "activity_prefix": "https://promptever.com/activities/workorder/",
+      "xapi_path": "context.contextActivities.parent",
+      "labels": {
+        "tr": "İş Emri",
+        "en": "Work Order"
+      }
+    },
+    "completionDate": {
+      "source_column": "tamamlanmatarih",
+      "xapi_path": "timestamp",
+      "labels": {
+        "tr": "Tamamlanma Tarihi",
+        "en": "Completion Date"
+      }
+    },
+    "recordDate": {
+      "source_column": "kayittarih",
+      "extension": "https://promptever.com/extensions/recordDate",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "Kayıt Tarihi",
+        "en": "Record Date"
+      }
+    },
+    "operationDate": {
+      "source_column": "islemtarihi",
+      "extension": "https://promptever.com/extensions/operationDate",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "İşlem Tarihi",
+        "en": "Operation Date"
+      }
+    },
+    "firstRegistrationDate": {
+      "source_column": "trafige_ilk_cikis_tarihi",
+      "extension": "https://promptever.com/extensions/firstRegistrationDate",
+      "xapi_path": "context.extensions",
+      "labels": {
+        "tr": "İlk Tescil Tarihi",
+        "en": "First Registration Date"
+      }
+    }
+  }
+}

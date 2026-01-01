@@ -1,0 +1,34 @@
+groq
+promptever-test: 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
+
+OpenRouter
+api-key: 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
+
+google AI studio
+api-key: AIzaSyAw5MFkoLLGIqs0baS-1NOpj28_NIl7WjA
+
+cerebras
+promptever-test: csk-38p8ckenypyc249cedfcpt48kyjethkj86j8f2fewrv3kvje
+
+mistral ai
+promptever-test: eLLF8ll3cuLSAv8TlOIHxNKrWmkAZZqJ
+
+# Groq
+curl -s https://api.groq.com/openai/v1/models \
+  -H "Authorization: Bearer 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" | jq '.data[].id'
+
+# OpenRouter
+curl -s https://openrouter.ai/api/v1/models \
+  -H "Authorization: Bearer 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" | jq '.data[].id'
+
+# Google AI Studio
+curl -s "https://generativelanguage.googleapis.com/v1beta/models?key=AIzaSyAw5MFkoLLGIqs0baS-1NOpj28_NIl7WjA" | jq '.models[].name'
+
+# Cerebras
+curl -s https://api.cerebras.ai/v1/models \
+  -H "Authorization: Bearer csk-38p8ckenypyc249cedfcpt48kyjethkj86j8f2fewrv3kvje" | jq '.data[].id'
+
+# Mistral
+curl -s https://api.mistral.ai/v1/models \
+  -H "Authorization: Bearer eLLF8ll3cuLSAv8TlOIHxNKrWmkAZZqJ" | jq '.data[].id'
+
